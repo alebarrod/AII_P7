@@ -28,7 +28,6 @@ class Director(models.Model):
 class Pelicula(models.Model):
     titulo = models.CharField(max_length=30)
     anyo = models.CharField(max_length=30)
-    director = models.CharField(max_length=30)
     resumen = models.CharField(max_length=30)
 
     fk_director = models.ManyToManyField(Director)

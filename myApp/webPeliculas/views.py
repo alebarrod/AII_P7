@@ -6,7 +6,7 @@ from webPeliculas.models import Actor,Pelicula,Categoria
 from django.core import serializers
 
 def actoresPorNombre(request):
-    a = list(Actor.objects.all().values())
+    a = list(Actor.objects.order_by('nombre').values('nombre','apellidos','biografia'))
 
     return JsonResponse(a, safe=False)
 

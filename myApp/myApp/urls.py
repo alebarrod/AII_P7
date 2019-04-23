@@ -20,5 +20,6 @@ from webPeliculas import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('actores/', views.actoresPorNombre)
+    path('actores/', views.actoresPorNombre),
+    path('peliculas/',views.peliculasPorCategoria)
 ]

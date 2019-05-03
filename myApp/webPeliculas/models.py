@@ -20,6 +20,7 @@ class Actor(models.Model):
     apellidos = models.CharField(max_length=30)
     biografia = models.CharField(max_length=100)
 
+
 class Director(models.Model):
     nombre = models.CharField(max_length=30)
     apellidos = models.CharField(max_length=30)
@@ -33,6 +34,9 @@ class Pelicula(models.Model):
     fk_director = models.ManyToManyField(Director)
     actores = models.ManyToManyField(Actor)
     categorias = models.ManyToManyField(Categoria)
+
+    def listaActores(self):
+        return self.actores.all()
 
 class Puntacion(models.Model):
     puntacion = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])

@@ -5,6 +5,7 @@ from django.http import HttpResponse, HttpResponseNotFound,JsonResponse
 from webPeliculas.models import Actor,Pelicula,Categoria
 from django.core import serializers
 
+
 def actoresPorNombre(request):
     a = list(Actor.objects.order_by('nombre').values('nombre','apellidos','biografia'))
 
@@ -13,7 +14,7 @@ def actoresPorNombre(request):
 def peliculasPorCategoria(request):
     pass
     
-def actorMasPopular(request):    
+def actorPopular(request):
     a = list(Pelicula.objects.all())
     
     diccionario = dict()
@@ -44,12 +45,6 @@ def actorMasPopular(request):
     for element in mas_populares:
         actor = Actor.objects.filter(id = element).values('nombre', 'apellidos')[0]
         res += actor['nombre'] + ', ' + actor['apellidos'] + ';'
-    '''
-    b = Categoria.objects.all().values()
-    c = list()
-    c = list(Actor.objects.all().values())
-    for element in b:
-        c.append(Pelicula.objects.filter(categorias=element['id']).values('titulo','resumen'))
-    '''
+    
 
     return JsonResponse(res, safe=False)

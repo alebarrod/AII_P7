@@ -37,6 +37,9 @@ class Pelicula(models.Model):
 
     def listaActores(self):
         return self.actores.all()
+    
+    def listaCategorias(self):
+        return self.categorias.all()
 
 class Puntacion(models.Model):
     puntacion = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])

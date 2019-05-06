@@ -30,15 +30,12 @@ def peliculasPorCategoria(request):
         dicctionarioRes[cat] = list()
 
         for pelicula in diccionario.keys():
-            print(str(cat.id) + " - " + str(diccionario[pelicula]))
             if cat.id in diccionario[pelicula]:
-                print("hola")
-                dicctionarioRes[cat].append(pelicula)
+                value = Pelicula.objects.filter(id = pelicula).values()[0]
+                dicctionarioRes[cat].append(value)
 
-    print(str(dicctionarioRes))
+    return render(request, 'peliculas.html', {'diccionario':dicctionarioRes})
 
-    return JsonResponse('res', safe=False)
-    
 def actorPopular(request):
     a = list(Pelicula.objects.all())
     

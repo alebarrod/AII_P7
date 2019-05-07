@@ -12,7 +12,7 @@ from django.core import serializers
 def actoresPorNombre(request):
     a = list(Actor.objects.order_by('nombre').values('nombre','apellidos','biografia'))
 
-    return JsonResponse(a, safe=False)
+    return render(request, 'actoresNombre.html', {'lista':a})
 
 def peliculasPorCategoria(request):
     a = list(Pelicula.objects.all())

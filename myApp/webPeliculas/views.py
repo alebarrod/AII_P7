@@ -47,4 +47,4 @@ def actorPopular(request):
         res += actor['nombre'] + ', ' + actor['apellidos'] + ';'
     
 
-    return JsonResponse(res, safe=False)
+    return render(request, 'actorPopular.html', {'valor': res})

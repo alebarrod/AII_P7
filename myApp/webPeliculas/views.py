@@ -15,8 +15,30 @@ def actoresPorNombre(request):
     return JsonResponse(a, safe=False)
 
 def peliculasPorCategoria(request):
-    pass
+    a = list(Pelicula.objects.all())
     
+    diccionario = dict()
+
+    for element in a:
+        diccionario[element.id] = list()
+        for element2 in element.listaCategorias():
+            valor = Categoria.objects.filter(id = element2.id).values()[0]['id']
+            diccionario[element.id].append(valor)
+            
+    categorias = list(Categoria.objects.all())
+
+    dicctionarioRes = dict()
+
+    for cat in categorias:
+        dicctionarioRes[cat] = list()
+
+        for pelicula in diccionario.keys():
+            if cat.id in diccionario[pelicula]:
+                value = Pelicula.objects.filter(id = pelicula).values()[0]
+                dicctionarioRes[cat].append(value)
+
+    return render(request, 'peliculas.html', {'diccionario':dicctionarioRes})
+
 def actorPopular(request):
     a = list(Pelicula.objects.all())
     

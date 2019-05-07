@@ -1,0 +1,14 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <h1>Actores por nombre</h1>
+        {% for value in lista %}
+            <div class="actor-{{ value.id }}">
+                <h3>{{value.apellidos}}, {{value.nombre}}</h3>
+                <p>{{value.biografia}}</p>
+            </div>
+        {% endfor %}
+    </body>
+</html>

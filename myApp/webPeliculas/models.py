@@ -34,8 +34,8 @@ class Pelicula(models.Model):
     actores = models.ManyToManyField(Actor)
     categorias = models.ManyToManyField(Categoria)
 
-class Puntacion(models.Model):
-    puntacion = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
+class Puntuacion(models.Model):
+    puntuacion = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
     
     fk_pelicula = models.ForeignKey(Pelicula, on_delete=models.CASCADE)
     fk_usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)

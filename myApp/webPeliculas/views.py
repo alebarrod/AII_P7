@@ -50,6 +50,7 @@ def actorPopular(request):
         res += actor['nombre'] + ', ' + actor['apellidos'] + ';'
     
 
+<<<<<<< HEAD
     return JsonResponse(res, safe=False)
 
 def mejorPelicula(request):
@@ -85,3 +86,6 @@ def mejorPelicula(request):
         
     
     return render(request, 'mejorPelicula.html', {'pelicula1':res[0], 'pelicula2':res[1]})
+=======
+    return render(request, 'actorPopular.html', {'valor': res})
+>>>>>>> 729f23863bed773d9bbd0713c4a077f5b882448c

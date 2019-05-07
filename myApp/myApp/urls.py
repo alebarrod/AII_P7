@@ -21,6 +21,11 @@ from webPeliculas import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('actores/', views.actoresPorNombre),
+<<<<<<< HEAD
+    path('actorPopular/', views.actorPopular),
+    path('mejorPelicula/', views.mejorPelicula)
+=======
     path('peliculas/',views.peliculasPorCategoria),
     path('actorPopular/', views.actorPopular)
+>>>>>>> master
 ]
